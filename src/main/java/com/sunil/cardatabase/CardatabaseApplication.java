@@ -8,8 +8,10 @@ import org.springframework.context.annotation.Bean;
 
 import com.sunil.cardatabase.domain.Car;
 import com.sunil.cardatabase.domain.Owner;
+import com.sunil.cardatabase.domain.User;
 import com.sunil.cardatabase.repository.CarRepository;
 import com.sunil.cardatabase.repository.OwnerRepository;
+import com.sunil.cardatabase.repository.UserRepository;
 
 @SpringBootApplication
 public class CardatabaseApplication {
@@ -19,6 +21,9 @@ public class CardatabaseApplication {
 
 	@Autowired
 	private OwnerRepository orepository;
+
+	@Autowired
+	private UserRepository urepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CardatabaseApplication.class, args);
@@ -37,6 +42,11 @@ public class CardatabaseApplication {
 			repository.save(new Car("Ford", "Mustang", "Red", "ADF-1121", 2017, 59000, owner1));
 			repository.save(new Car("Nissan", "Leaf", "White", "SSJ-3002", 2014, 29000, owner2));
 			repository.save(new Car("Toyota", "Prius", "Silver", "KKO-0212", 2018, 39000, owner1));
+
+			urepository.save(new User("user", "$2a$04$1.YhMIgNX/8TkCKGFUONWO1waedKhQ5KrnB30fl0Q01QKqmzLf.Zi", "USER"));
+			urepository
+					.save(new User("admin", "$2a$04$KNLUwOWHVQZVpXyMBNc7JOzbLiBjb9Tk9bP7KNcPI12ICuvzXQQKG", "ADMIN"));
+
 		};
 	}
 
